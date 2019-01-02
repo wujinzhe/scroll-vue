@@ -40,9 +40,11 @@ export default {
   data () {
     return {
       cellData: [],
+      // 下拉刷新请求的方法，必须返回promise
       downPullLoad: () => {
         return ajaxDownPull()
       },
+      // 上拉加载更多请求的方法，必须返回promise
       upPullLoad: () => {
         return ajaxDownPull()
       }
@@ -57,7 +59,7 @@ export default {
     click () {
       this.$toast.success('成功文案')
     },
-    /** 下拉加载完成事件 */
+    /** 下拉刷新完成事件 */
     downPullLoadFinished (data) {
       console.log('我是下拉刷新的数据', data)
       this.cellData = data

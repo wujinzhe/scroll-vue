@@ -1,17 +1,29 @@
-# iview-extra  基于iview的UI组件
+# vue的scroll组件
 
 
 ## 使用
 
 ``` bash
 # 安装依赖
-npm install iview-extra -S
+npm install @wujinzhe/scroll-vue -S
 
 ```
 
 ``` JS
-import iViewExtra from 'iview-extra'
+// 全局引入
+import scroll from '@wujinzhe/scroll-vue'
 
-Vue.use(iViewExtra)
+Vue.use(scroll)
+
+// 组件内引入
+
+import scroll from '@wujinzhe/scroll-vue'
+
+export default {
+  components: {
+    scroll
+  }
+}
 ```
-和iview一样引入，引入完之后可以直接使用对应的组件，样式只需要引入iview的样式即可，不需要引入其它样式
+
+例子查看： <https://github.com/wujinzhe/scroll-vue/blob/master/examples/views/demo1.vue>

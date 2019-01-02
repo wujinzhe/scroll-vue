@@ -1,9 +1,10 @@
 {
-  "name": "scroll-vue",
+  "name": "@wujinzhe/scroll-vue",
   "version": "0.1.0",
   "description": "基于better-scroll 的vue组件",
   "author": "吴晋哲 <wujinzhe@iboxpay.com>",
   "main": "dist/vue-scroll.js",
+  "public": true,
   "files": [
     "dist",
     "src"
