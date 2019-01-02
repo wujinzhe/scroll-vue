@@ -14,9 +14,9 @@ module.exports = merge(webpackBaseConfig, {
   },
   output: {
     path: resolve('../dist'),
-    filename: 'vue-scroll.js',
+    filename: 'scroll-vue.js',
     libraryTarget: 'umd',
-    library: 'vue-scroll',
+    library: 'scroll-vue',
     umdNamedDefine: true
   },
   externals: {

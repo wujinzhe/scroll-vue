@@ -3,7 +3,7 @@
     <div ref="iscrollContent" class="iscroll-content" @touchstart="touchStart" @mousedown="touchStart">
       <div class="down" :style="downStyle">
         <span class="pull__text">
-          <img v-if="downText === down.loadingText" class="loadImg" src="../assets/loading.gif"/>
+          <img v-if="downText === down.loadingText" class="loadImg" src="../assets/loading.svg"/>
           {{ downText }}
         </span>
       </div>
@@ -12,7 +12,7 @@
       </div>
       <div class="up" :style="upStyle">
         <span class="pull__text">
-          <img v-if="upText === up.loadingText" class="loadImg" src="../assets/loading.gif"/>
+          <img v-if="upText === up.loadingText" class="loadImg" src="../assets/loading.svg"/>
           {{ upText }}
         </span>
       </div>
@@ -300,10 +300,9 @@ export default {
   }
 
   .loadImg {
-    width: 17px;
-    display: line-block;
+    width: 30px;
+    display: inline-block;
     vertical-align: middle;
-    margin-right: 3px;
   }
 
   #iscroll {
