@@ -23,10 +23,11 @@
 <script>
 import IScroll from 'better-scroll'
 import Trigger from '../utils/Trigger'
+import EventList from '../utils/eventList'
 import Cache from '../utils/Cache'
 
-const downHeight = 50
-const upHeight = 50
+// const this.downHeight = 50
+// const this.upHeight = 50
 var lastY = 0 // 防止上一个高度与下一个高度整数部分相同
 
 export default {
@@ -56,11 +57,19 @@ export default {
       type: Function,
       default: () => {}
     },
+    downHeight: {
+      type: Number,
+      default: 50
+    },
+    upHeight: {
+      type: Number,
+      default: 50
+    },
     down: {
       type: [Object, Boolean],
       default: () => {
         return {
-          refreshHeight: 50,
+          height: 50,
           pullText: '上拉加载更多', // 上拉时候的提示文字
           loadingText: '加载数据中', // 加载的提示文字
           successText: '刷新成功' // 上拉成功的提示文字
@@ -71,7 +80,7 @@ export default {
       type: [Object, Boolean],
       default: () => {
         return {
-          refreshHeight: 50,
+          height: 50,
           pullText: '上拉加载更多', // 上拉时候的提示文字
           loadingText: '加载数据中', // 加载的提示文字
           successText: '加载成功', // 上拉成功的提示文字
@@ -109,15 +118,15 @@ export default {
     },
     downStyle () {
       return {
-        height: `${downHeight}px`,
-        lineHeight: `${downHeight}px`,
-        top: `-${downHeight}px`
+        height: `${this.downHeight}px`,
+        lineHeight: `${this.downHeight}px`,
+        top: `-${this.downHeight}px`
       }
     },
     upStyle () {
       return {
-        height: `${upHeight}px`,
-        lineHeight: `${upHeight}px`
+        height: `${this.upHeight}px`,
+        lineHeight: `${this.upHeight}px`
       }
     },
     /** iscroll高度 */
@@ -129,9 +138,9 @@ export default {
       return this.$refs.listWrap.clientHeight
     },
     /** 上拉高度 */
-    upHeight () {
-      return this.iscrollHeight - this.$refs.listWrap.clientHeight
-    },
+    // this.upHeight () {
+    //   return this.iscrollHeight - this.$refs.listWrap.clientHeight
+    // },
     /** 下拉加载事件，带缓存 */
     downPullCacheLoad () {
       return Cache(this.downPullLoad)
@@ -149,8 +158,7 @@ export default {
     this.initList()
   },
   created () {
-    // this.downPullEvent
-    // this.downPullLoad
+    Trigger.addTriggerEvent(EventList(this.downHeight, this.upHeight))
   },
   methods: {
     /** 初始化scroll组件 */
@@ -206,7 +214,7 @@ export default {
       this.trigger.on('toDownPullLoad', () => {
         console.log('----回到加载状态----')
         this.downText = this.down.loadingText // 变成加载文字
-        this.iscroll.scrollTo(0, downHeight, 300)
+        this.iscroll.scrollTo(0, this.downHeight, 300)
       })
 
       // 下拉刷新回到初始状态

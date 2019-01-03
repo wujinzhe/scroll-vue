@@ -1,4 +1,4 @@
-import eventList from './eventList'
+// import eventList from './eventList'
 
 let _triggerEventObj = {} // 定义的可触发的事件
 let _event = {} // 你所监听的所有事件
@@ -36,6 +36,6 @@ Trigger.prototype.on = function (eventName, fn) {
 }
 
 // 添加事件
-Trigger.addTriggerEvent(eventList)
+// Trigger.addTriggerEvent(eventList)
 
 export default Trigger

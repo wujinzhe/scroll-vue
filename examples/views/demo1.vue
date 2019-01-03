@@ -2,7 +2,9 @@
   <div class="scroll-wrap" id="scroll-wrap">
     <scroll
       :downPullLoad="downPullLoad"
+      :downHeight="50"
       @downPullLoadFinished="downPullLoadFinished"
+      :upHeight="50"
       :upPullLoad="upPullLoad"
       @upPullLoadFinished="upPullLoadFinished">
       <div class="list" slot="list">
