@@ -194,12 +194,14 @@ export default {
             this.downText = this.down.successText // 变成成功文字
             this.downPullCacheLoad.clear() // 清空重置缓存
             this.$emit('downPullLoadFinished', resp)
+            // this.initList()
           }
         })
       })
 
       // 监听是否处于按住下拉状态
       this.trigger.on('touchDownPull', () => {
+        if (this.$refs.listWrap.clientHeight < this.iscrollHeight) return
         console.log('----下拉状态----')
         this.downText = this.down.pullText // 变成按住下拉文字
       })
@@ -226,18 +228,21 @@ export default {
       /* ------上拉的监听事件------- */
       // 上拉状态
       this.trigger.on('touchUpPull', () => {
+        if (this.$refs.listWrap.clientHeight < this.iscrollHeight) return
         console.log('----上拉状态----')
         this.upText = this.up.pullText // 变回上拉加载文字
       })
 
       // 上拉状态（超过范围了）
       this.trigger.on('touchUpPullOut', () => {
+        if (this.$refs.listWrap.clientHeight < this.iscrollHeight) return
         console.log('----上拉状态（超过范围了）----')
         this.upText = '松开加载更多' // 变回松开加载文字
       })
 
       // 变到上拉加载状态
       this.trigger.on('toUpPullLoad', () => {
+        if (this.$refs.listWrap.clientHeight < this.iscrollHeight) return
         console.log('----变到上拉加载状态----')
         this.upText = this.up.loadingText // 变成上拉加载文字
         this.iscroll.scrollTo(0, this.iscrollHeight - this.$refs.listWrap.clientHeight - 50, 300)
@@ -245,6 +250,7 @@ export default {
 
       // 触发上拉加载中
       this.trigger.on('upPullLoad', () => {
+        if (this.$refs.listWrap.clientHeight < this.iscrollHeight) return
         console.log('----上拉加载中----')
         this.upText = this.up.loadingText // 变成上拉加载文字
         this.iscroll.stop()

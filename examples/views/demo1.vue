@@ -20,7 +20,7 @@ import cell from '../components/cell.vue'
 const ajaxDownPull = () => new Promise((resolve, reject) => {
   let list = []
   let promiseList = []
-  for (let i = 0; i < 13; i++) {
+  for (let i = 0; i < 4; i++) {
     promiseList.push(new Promise((resolve, reject) => {
       setTimeout(() => {
         list.push(Math.round(Math.random() * 100))
@@ -53,9 +53,9 @@ export default {
     }
   },
   mounted () {
-    let bodyHeight = document.body.clientHeight
-    let headHeight = document.querySelectorAll('.van-nav-bar')[0].clientHeight
-    document.querySelector('#scroll-wrap').style.height = `${bodyHeight - headHeight}px`
+    // let bodyHeight = document.body.clientHeight
+    // let headHeight = document.querySelectorAll('.van-nav-bar')[0].clientHeight
+    // document.querySelector('#scroll-wrap').style.height = `${bodyHeight - headHeight}px`
   },
   methods: {
     click () {
